@@ -625,6 +625,7 @@ cfg_client! {
                         cb.send(Ok(res));
                         Ok(())
                     } else {
+                        println!("Unexpected message [recv_msg] at: {}", std::backtrace::Backtrace::capture()); // v
                         // Getting here is likely a bug! An error should have happened
                         // in Conn::require_empty_read() before ever parsing a
                         // full message!

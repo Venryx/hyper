@@ -401,7 +401,7 @@ where
 
         if !self.io.read_buf().is_empty() {
             debug!("received an unexpected {} bytes", self.io.read_buf().len());
-            println!("Unexpected message [require_empty_read#1] at: {}", std::backtrace::Backtrace::capture()); // v
+            warn!("Unexpected message [require_empty_read#1] at: {}", std::backtrace::Backtrace::capture()); // v
             return Poll::Ready(Err(crate::Error::new_unexpected_message()));
         }
 
@@ -425,7 +425,7 @@ where
             "received unexpected {} bytes on an idle connection",
             num_read
         );
-        println!("Unexpected message [require_empty_read#2] at: {}", std::backtrace::Backtrace::capture()); // v
+        warn!("Unexpected message [require_empty_read#2] at: {}", std::backtrace::Backtrace::capture()); // v
         Poll::Ready(Err(crate::Error::new_unexpected_message()))
     }
 
